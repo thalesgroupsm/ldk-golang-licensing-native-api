@@ -25,7 +25,7 @@ You need install **Sentinel LDK & LDK-EMS** on your system. If you are a new use
 
 On Winodws, please copy the files **apidsp_windows_x64.dll** and **hasp_windows_x64_<vendorid>.dll** to an folder, then update the go env **CGO_LDFLAGS** and system env PATH.
 ```shell
-set CGO_LDFLAGS=%CGO_LDFLAGS% -L<your folder>
+go env -w CGO_LDFLAGS="-g -O2 -L<your folder>"
 set PATH=%PATH%;<your folder>
 ```
 
