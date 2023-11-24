@@ -17,6 +17,10 @@ Class | Method | Description
 *LicenseApi* | **HaspGetInfo(scope string, format string, vendor_code string) (info string, err int)** |  get info
 *LicenseApi* | [**HaspUpdate(update_data string) (info string, err int)**] |  update
 *LicenseApi* | [**HaspTransfer(action string, scope string, vendor_code string, recipient string) (output string, err int)**] |  tranfter
+*AdminApi* | [**SntlAdminContextNewScope(scope string) (context uintptr, err int)**] |  create admin context 
+*AdminApi* | [**SntlAdminSet(context uintptr, input string) (status string, err int)**] |  admin set
+*AdminApi* | [**SntlAdminGet(context uintptr, scope string, format string) (info string, err int)**] |  admin get
+*AdminApi* | [**SntlAdminContextDelete(context uintptr) (err int)**] |  delete context
 
 ## Dependencies
 On each platform, you'll need a Go installation that supports cgo compilation. On Windows, you also need to download and install GCC compiler as the guide on https://sourceforge.net/projects/gcc-win64/.  
@@ -41,7 +45,7 @@ import licenseApi "github.com/thalesgroupsm/ldk-golang-licensing-native-api"
 
 ## sample
 ```go
-    L := licenseApi.NewLicenseApi()
+	L := licenseApi.NewLicenseApi()
 
 	/* login to default feature (0)                 */
 	/* this default feature is available on any key */
