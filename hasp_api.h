@@ -568,6 +568,9 @@ enum hasp_error_codes
     /** Feature start date not yet reached */
     HASP_FEATURE_START_DATE_NOT_REACHED = 109,
 
+    /** The identity is temporarily not accessible */
+    HASP_IDENTITY_TEMPORARILY_NOT_ACCESSIBLE = 110,
+
     /** API dispatcher: API for this Vendor Code was not found */
     HASP_NO_API_DYLIB = 400,
 
@@ -1930,7 +1933,7 @@ hasp_status_t HASP_CALLCONV hasp_update_session(hasp_handle_t handle,
  *                    </ul>
  *
  */
-hasp_status_t HASP_CALLCONV hasp_config(const char *config);
+hasp_status_t HASP_CALLCONV hasp_config(const char *config, hasp_vendor_code_t vendor_code);
 
 /**
  * @}
