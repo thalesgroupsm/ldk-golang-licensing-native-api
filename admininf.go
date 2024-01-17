@@ -1,4 +1,4 @@
-package license_api
+package licensing_api
 
 // #cgo CFLAGS: -I .
 // #cgo windows LDFLAGS: -L. -lapidsp_windows_x64

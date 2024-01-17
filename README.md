@@ -4,19 +4,19 @@ All URIs are relative to *https://localhost:8088/sentinel/ldk_runtime/v1*
 
 Class | Method | Description
 ------------ | ------------- |  -------------
-*LicenseApi* | **HaspLogin(feature_id int, vendor_code string) (handle uintptr, err int)** | login
-*LicenseApi* | **HaspLoginScope(feature_id int, scope string, vendor_code string) (handle uintptr, err int)** | login scope
-*LicenseApi* | [**HaspLogout(handle uintptr) (err int)**] |  logout
-*LicenseApi* | [**HaspEncrypt(handle uintptr, data *byte, size uint) (err int)**] |  encrypt
-*LicenseApi* | [**HaspDecrypt(handle uintptr, data *byte, size uint) (err int)**] |  desrypt
-*LicenseApi* | [**HaspGetSize(handle uintptr, file_id int, size *uint) (err int)**] |  get size
-*LicenseApi* | [**HaspWrite(handle uintptr, file_id uint, offset uint, len uint, data *byte) (err int)**] |  write file
-*LicenseApi* | [**HaspRead(handle uintptr, file_id uint, offset uint, len uint, data *byte)**] |  read file
-*LicenseApi* | [**HaspGetRtc(handle uintptr, time *uint64) (err int)**] |  get rtc
-*LicenseApi* | **HaspGetSessionInfo(handle uintptr, format string) (info string, err int)** |  get session info
-*LicenseApi* | **HaspGetInfo(scope string, format string, vendor_code string) (info string, err int)** |  get info
-*LicenseApi* | [**HaspUpdate(update_data string) (info string, err int)**] |  update
-*LicenseApi* | [**HaspTransfer(action string, scope string, vendor_code string, recipient string) (output string, err int)**] |  tranfter
+*LicensingApi* | **HaspLogin(feature_id int, vendor_code string) (handle uintptr, err int)** | login
+*LicensingApi* | **HaspLoginScope(feature_id int, scope string, vendor_code string) (handle uintptr, err int)** | login scope
+*LicensingApi* | [**HaspLogout(handle uintptr) (err int)**] |  logout
+*LicensingApi* | [**HaspEncrypt(handle uintptr, data *byte, size uint) (err int)**] |  encrypt
+*LicensingApi* | [**HaspDecrypt(handle uintptr, data *byte, size uint) (err int)**] |  desrypt
+*LicensingApi* | [**HaspGetSize(handle uintptr, file_id int, size *uint) (err int)**] |  get size
+*LicensingApi* | [**HaspWrite(handle uintptr, file_id uint, offset uint, len uint, data *byte) (err int)**] |  write file
+*LicensingApi* | [**HaspRead(handle uintptr, file_id uint, offset uint, len uint, data *byte)**] |  read file
+*LicensingApi* | [**HaspGetRtc(handle uintptr, time *uint64) (err int)**] |  get rtc
+*LicensingApi* | **HaspGetSessionInfo(handle uintptr, format string) (info string, err int)** |  get session info
+*LicensingApi* | **HaspGetInfo(scope string, format string, vendor_code string) (info string, err int)** |  get info
+*LicensingApi* | [**HaspUpdate(update_data string) (info string, err int)**] |  update
+*LicensingApi* | [**HaspTransfer(action string, scope string, vendor_code string, recipient string) (output string, err int)**] |  tranfter
 *AdminApi* | [**SntlAdminContextNewScope(scope string) (context uintptr, err int)**] |  create admin context 
 *AdminApi* | [**SntlAdminSet(context uintptr, input string) (status string, err int)**] |  admin set
 *AdminApi* | [**SntlAdminGet(context uintptr, scope string, format string) (info string, err int)**] |  admin get
@@ -40,12 +40,12 @@ export LD_LIBRARY_PATH=<your folder>
 ```
 ##usage
 ```go
-import licenseApi "github.com/thalesgroupsm/ldk-golang-licensing-native-api"
+import licensingApi "github.com/thalesgroupsm/ldk-golang-licensing-native-api"
 ```
 
 ## sample
 ```go
-	L := licenseApi.NewLicenseApi()
+	L := licensingApi.NewLicenseApi()
 
 	/* login to default feature (0)                 */
 	/* this default feature is available on any key */

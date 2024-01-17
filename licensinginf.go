@@ -1,4 +1,4 @@
-package license_api
+package licensing_api
 
 // #cgo CFLAGS: -I .
 // #cgo windows LDFLAGS: -L. -lapidsp_windows_x64
@@ -10,11 +10,11 @@ import (
 	"unsafe"
 )
 
-type LicenseApi struct {
+type LicensingApi struct {
 }
 
-func NewLicenseApi() *LicenseApi {
-	return &LicenseApi{}
+func NewlicensingApi() *LicensingApi {
+	return &LicensingApi{}
 }
 
 func UintPtrToString(r uintptr) string {
@@ -32,27 +32,27 @@ func UintPtrToString(r uintptr) string {
 }
 
 /*
-LicenseApi HaspLogin
+LicensingApi HaspLogin
   - @param feature_id unique identifier for a specific Feature stored in a Sentinel protection key
   - @param vendor_code vendor code string
 
 @return handle the resulting session handle
 */
-func (l *LicenseApi) HaspLogin(feature_id int, vendor_code string) (handle uintptr, err int) {
+func (l *LicensingApi) HaspLogin(feature_id int, vendor_code string) (handle uintptr, err int) {
 	vendor_code_p := append([]byte(vendor_code), 0)
 	err = int(C.hasp_login((C.uint)(feature_id), C.hasp_vendor_code_t(&vendor_code_p[0]), (*C.hasp_handle_t)(unsafe.Pointer(&handle))))
 	return
 }
 
 /*
-LicenseApi HaspLoginScope
+LicensingApi HaspLoginScope
   - @param feature_id unique identifier for a specific Feature stored in a Sentinel protection key
   - @param scope definition of the search parameters for this Feature ID
   - @param vendor_code vendor code string
 
 @return handle the resulting session handle
 */
-func (l *LicenseApi) HaspLoginScope(feature_id int, scope string, vendor_code string) (handle uintptr, err int) {
+func (l *LicensingApi) HaspLoginScope(feature_id int, scope string, vendor_code string) (handle uintptr, err int) {
 	vendor_code_p := append([]byte(vendor_code), 0)
 
 	ptr_scope := C.CString(scope)
@@ -63,14 +63,14 @@ func (l *LicenseApi) HaspLoginScope(feature_id int, scope string, vendor_code st
 }
 
 /*
-LicenseApi HaspGetSessionInfo
+LicensingApi HaspGetSessionInfo
   - @param handle Handle for the session
   - @param format Definition for the type of output data structure, in XML format
   - @param vendor_code vendor code string
 
 @return handle the resulting session handle
 */
-func (l *LicenseApi) HaspGetSessionInfo(handle uintptr, format string) (info string, err int) {
+func (l *LicensingApi) HaspGetSessionInfo(handle uintptr, format string) (info string, err int) {
 
 	info_p := make([]uintptr, 1)
 	ptr_format := C.CString(format)
@@ -85,41 +85,41 @@ func (l *LicenseApi) HaspGetSessionInfo(handle uintptr, format string) (info str
 }
 
 /*
-LicenseApi HaspGetSize
+LicensingApi HaspGetSize
   - @param handle Handle for the session
   - @param fileid Identifier for the file that is to be queried
   - @param size hold the resulting file size
 
 @return
 */
-func (l *LicenseApi) HaspGetSize(handle uintptr, file_id int, size *uint) (err int) {
+func (l *LicensingApi) HaspGetSize(handle uintptr, file_id int, size *uint) (err int) {
 
 	err = int(C.hasp_get_size((C.hasp_handle_t)(handle), C.uint(file_id), (*C.uint)(unsafe.Pointer(size))))
 	return
 }
 
 /*
-LicenseApi HaspGetRtc
+LicensingApi HaspGetRtc
   - @param handle Handle for the session
   - @param time hold the current time
 
 @return
 */
-func (l *LicenseApi) HaspGetRtc(handle uintptr, time *uint64) (err int) {
+func (l *LicensingApi) HaspGetRtc(handle uintptr, time *uint64) (err int) {
 
 	err = int(C.hasp_get_rtc((C.hasp_handle_t)(handle), (*C.hasp_time_t)(unsafe.Pointer(time))))
 	return
 }
 
 /*
-LicenseApi HaspGetInfo
+LicensingApi HaspGetInfo
   - @param scope definition of the data that is to be searched, in XML format
   - @param format definition for the type of output data structure, in XML format
   - @param vendor_code vendor code string
 
 @return info the information that is retrieved
 */
-func (l *LicenseApi) HaspGetInfo(scope string, format string, vendor_code string) (info string, err int) {
+func (l *LicensingApi) HaspGetInfo(scope string, format string, vendor_code string) (info string, err int) {
 
 	vendor_code_p := append([]byte(vendor_code), 0)
 	info_p := make([]uintptr, 1)
@@ -141,24 +141,24 @@ func (l *LicenseApi) HaspGetInfo(scope string, format string, vendor_code string
 }
 
 /*
-LicenseApi HaspLogout
+LicensingApi HaspLogout
   - @param handle handle for the session
 
 @return
 */
-func (l *LicenseApi) HaspLogout(handle uintptr) (err int) {
+func (l *LicensingApi) HaspLogout(handle uintptr) (err int) {
 
 	err = int(C.hasp_logout((C.hasp_handle_t)(handle)))
 	return
 }
 
 /*
-LicenseApi HaspUpdate
+LicensingApi HaspUpdate
   - @param update_data the complete update data
 
 @return info the information that is retrieved
 */
-func (l *LicenseApi) HaspUpdate(update_data string) (info string, err int) {
+func (l *LicensingApi) HaspUpdate(update_data string) (info string, err int) {
 
 	ack := make([]uintptr, 1)
 
@@ -174,35 +174,35 @@ func (l *LicenseApi) HaspUpdate(update_data string) (info string, err int) {
 }
 
 /*
-LicenseApi HaspEncrypt
+LicensingApi HaspEncrypt
   - @param handle handle for the session
   - @param data the data to be encrypted
   - @param size the size of data to encrypted
 
 @return
 */
-func (l *LicenseApi) HaspEncrypt(handle uintptr, data *byte, size uint) (err int) {
+func (l *LicensingApi) HaspEncrypt(handle uintptr, data *byte, size uint) (err int) {
 
 	err = int(C.hasp_encrypt((C.hasp_handle_t)(handle), unsafe.Pointer(data), C.uint(size)))
 	return
 }
 
 /*
-LicenseApi HaspDecrypt
+LicensingApi HaspDecrypt
   - @param handle handle for the session
   - @param data the data to be decrypted
   - @param size the size of data to decrypted
 
 @return
 */
-func (l *LicenseApi) HaspDecrypt(handle uintptr, data *byte, size uint) (err int) {
+func (l *LicensingApi) HaspDecrypt(handle uintptr, data *byte, size uint) (err int) {
 
 	err = int(C.hasp_decrypt((C.hasp_handle_t)(handle), unsafe.Pointer(data), C.uint(size)))
 	return
 }
 
 /*
-LicenseApi HaspWrite
+LicensingApi HaspWrite
   - @param handle handle for the session
   - @param fileid identifier for the file that is to be written
   - @param offset offset in the file
@@ -211,13 +211,13 @@ LicenseApi HaspWrite
 
 @return
 */
-func (l *LicenseApi) HaspWrite(handle uintptr, file_id uint, offset uint, len uint, data *byte) (err int) {
+func (l *LicensingApi) HaspWrite(handle uintptr, file_id uint, offset uint, len uint, data *byte) (err int) {
 	err = int(C.hasp_write((C.hasp_handle_t)(handle), (C.uint)(file_id), (C.uint)(offset), (C.uint)(len), unsafe.Pointer(data)))
 	return
 }
 
 /*
-LicenseApi HaspRead
+LicensingApi HaspRead
   - @param handle handle for the session
   - @param fileid identifier for the file that is to be read
   - @param offset offset in the file
@@ -226,14 +226,14 @@ LicenseApi HaspRead
 
 @return
 */
-func (l *LicenseApi) HaspRead(handle uintptr, file_id uint, offset uint, len uint, data *byte) (err int) {
+func (l *LicensingApi) HaspRead(handle uintptr, file_id uint, offset uint, len uint, data *byte) (err int) {
 	err = int(C.hasp_read((C.hasp_handle_t)(handle), (C.uint)(file_id), (C.uint)(offset), (C.uint)(len), unsafe.Pointer(data)))
 	return err
 
 }
 
 /*
-LicenseApi HaspTransfer
+LicensingApi HaspTransfer
   - @param action parameters for the operation, in XML format
   - @param scope search parameters for the conatiner-id that is to be re-hosted
   - @param vendor_code vendor code string
@@ -241,7 +241,7 @@ LicenseApi HaspTransfer
 
 @return output the output information that is retrieved, in XML format
 */
-func (l *LicenseApi) HaspTransfer(action string, scope string, vendor_code string, recipient string) (output string, err int) {
+func (l *LicensingApi) HaspTransfer(action string, scope string, vendor_code string, recipient string) (output string, err int) {
 
 	output_p := make([]uintptr, 1)
 
@@ -267,12 +267,12 @@ func (l *LicenseApi) HaspTransfer(action string, scope string, vendor_code strin
 }
 
 /*
-LicenseApi HaspConfig
+LicensingApi HaspConfig
   - @param config parameters for the operation, in XML format
 
 @return
 */
-func (l *LicenseApi) HaspConfig(config string, vendor_code string) (err int) {
+func (l *LicensingApi) HaspConfig(config string, vendor_code string) (err int) {
 
 	configPtr := C.CString(config)
 	defer C.free(unsafe.Pointer(configPtr))
