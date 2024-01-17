@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	licenseApi "github.com/thalesgroupsm/ldk-golang-licensing-native-api"
+	licensingApi "github.com/thalesgroupsm/ldk-golang-licensing-native-api"
 )
 
 /*vendor code for DemoMA*/
@@ -28,7 +28,7 @@ const (
 
 func hasp_demo() {
 
-	L := licenseApi.NewLicenseApi()
+	L := licensingApi.NewLicenseApi()
 
 	/* login to default feature (0)                 */
 	/* this default feature is available on any key */
@@ -161,7 +161,7 @@ func hasp_demo() {
 
 func hasp_update() {
 
-	L := licenseApi.NewLicenseApi()
+	L := licensingApi.NewLicenseApi()
 
 	/*
 	 * hasp_get_info
