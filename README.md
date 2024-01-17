@@ -27,13 +27,13 @@ On each platform, you'll need a Go installation that supports cgo compilation. O
 
 You need install **Sentinel LDK & LDK-EMS** on your system. If you are a new user, please go https://supportportal.thalesgroup.com to download and install the package.
 
-On Winodws, please copy the files **apidsp_windows_x64.dll** and **hasp_windows_x64_<vendorid>.dll** to an folder, then update the go env **CGO_LDFLAGS** and system env PATH.
+On Winodws, please copy the files **apidsp_windows_x64.dll** and **hasp_windows_x64_xxxx.dll** (xxxx means vendor id) to an folder, then update the go env **CGO_LDFLAGS** and system env PATH.
 ```shell
 go env -w CGO_LDFLAGS="-g -O2 -L<your folder>"
 set PATH=%PATH%;<your folder>
 ```
 
-On Linux, please copy **libapidsp_linux_x86_64.so** and **libhasp_linux_x86_64_<vendorid>.so** to an folder, then update the go env **CGO_LDFLAGS** and set enviroment **LD_LIBRARY_PATH**
+On Linux, please copy **libapidsp_linux_x86_64.so** and **libhasp_linux_x86_64_xxxx.so** (xxxx means vendor id) to an folder, then update the go env **CGO_LDFLAGS** and set enviroment **LD_LIBRARY_PATH**
 ```shell
 go env -w CGO_LDFLAGS="-g -O2 -L<your folder>"
 export LD_LIBRARY_PATH=<your folder>
