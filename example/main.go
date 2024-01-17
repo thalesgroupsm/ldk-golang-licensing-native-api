@@ -28,7 +28,7 @@ const (
 
 func hasp_demo() {
 
-	L := licensingApi.NewLicenseApi()
+	L := licensingApi.NewlicensingApi()
 
 	/* login to default feature (0)                 */
 	/* this default feature is available on any key */
@@ -161,7 +161,7 @@ func hasp_demo() {
 
 func hasp_update() {
 
-	L := licensingApi.NewLicenseApi()
+	L := licensingApi.NewlicensingApi()
 
 	/*
 	 * hasp_get_info
