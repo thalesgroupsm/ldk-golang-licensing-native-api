@@ -27,7 +27,7 @@ On each platform, you'll need a Go installation that supports cgo compilation. O
 
 You need install **Sentinel LDK & LDK-EMS** on your system. If you are a new user, please go https://supportportal.thalesgroup.com to download and install the package.
 
-On Winodws, please copy the files **apidsp_windows_x64.dll** and **hasp_windows_x64_xxxx.dll** (xxxx means vendor id) to a folder which DLL can be searched（https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order）by your applications. 
+On Winodws, please copy the files **apidsp_windows_x64.dll** and **hasp_windows_x64_xxxx.dll** (xxxx means vendor id) to a folder which DLL can be searched（https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order ) by your applications. 
 
 On Linux, please copy **libapidsp_linux_x86_64.so** and **libhasp_linux_x86_64_xxxx.so** (xxxx means vendor id) to a specific folder, then update the go env **CGO_LDFLAGS** and set enviroment **LD_LIBRARY_PATH**
 ```shell
