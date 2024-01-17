@@ -13,7 +13,7 @@ import (
 type LicensingApi struct {
 }
 
-func NewlicensingApi() *LicensingApi {
+func NewLicensingApi() *LicensingApi {
 	return &LicensingApi{}
 }
 
